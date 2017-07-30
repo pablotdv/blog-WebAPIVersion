@@ -17,7 +17,7 @@ using WebAPIVersion.Models;
 using WebAPIVersion.Providers;
 using WebAPIVersion.Results;
 
-namespace WebAPIVersion.Controllers
+namespace WebAPIVersion.V2.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
