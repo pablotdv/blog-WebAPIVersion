@@ -16,11 +16,13 @@ using Microsoft.Owin.Security.OAuth;
 using WebAPIVersion.Models;
 using WebAPIVersion.Providers;
 using WebAPIVersion.Results;
+using Microsoft.Web.Http;
 
 namespace WebAPIVersion.V1.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
+    [ApiVersion("1.0")]
+    [RoutePrefix("api/v{api-version:apiVersion}/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
@@ -224,7 +226,7 @@ namespace WebAPIVersion.V1.Controllers
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
-        [Route("ExternalLogin", Name = "ExternalLogin")]
+        [Route("ExternalLogin", Name = "ExternalLoginV1")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
         {
             if (error != null)
